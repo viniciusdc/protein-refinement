@@ -1,1 +1,1 @@
-{"paths": {"protein_path": "E:\\PycharmProjects\\protein-refinement\\Nodes", "tests_path": "E:\\PycharmProjects\\protein-refinement\\Tests"}, "level": "INFO", "global_settings": {"statistics": true, "multi_start": false, "disable_SPD": false}}
+{"paths": {"proteins_path": "E:\\PycharmProjects\\protein-refinement\\Nodes", "tests_path": "E:\\PycharmProjects\\protein-refinement\\Tests"}, "global_settings": {"disable_SPD": false, "multi_start": false, "statistics": true}}

@@ -7,7 +7,7 @@ def gen_file(working_dir: str) -> dict:
     """"This code generates the config.json file"""
 
     # defines the skeleton for the config dict
-    config = {'paths': {}, 'level': None, 'global_settings': {}}
+    config = {'paths': {}, 'global_settings': {}}
 
     # get logger
     logger = logging.getLogger('main.gen_config_file')
@@ -28,9 +28,8 @@ def gen_file(working_dir: str) -> dict:
 
     elif choice == 0:
         # Standard mode
-        config['paths'] = {'protein_path': working_dir + '\\Nodes', 'tests_path': working_dir + '\\Tests'}
-        config['level'] = 'INFO'
-        config['global_settings'] = {'statistics': True, 'multi_start': False, 'disable_SPD': False}
+        config['paths'] = {'proteins_path': working_dir + '\\Nodes', 'tests_path': working_dir + '\\Tests'}
+        config['global_settings'] = {'disable_SPD': False, 'multi_start': False, 'statistics': True}
 
     elif choice == 1:
         # Custom mode:
