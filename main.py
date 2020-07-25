@@ -3,9 +3,7 @@ import os
 import json
 import logging
 
-
-def _gen_config_file(working_dir: str, save_path: str) -> dict:
-    return {}
+from Scripts.gen_config_file import gen_file as _gen_config_file
 
 
 def main() -> None:
@@ -31,7 +29,7 @@ def main() -> None:
         logging.info(":: System Report: Creating a new configuration...")
         logging.info(
             ":: Please check the Readme file for information regarding the settings configuration standards.\n")
-        config = _gen_config_file(current_dir, config_file_path)
+        config = _gen_config_file(current_dir)
 
     # run environment tests
     # run structure tests
