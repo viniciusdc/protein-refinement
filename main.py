@@ -57,9 +57,8 @@ def main() -> None:
             ":: Please check the Readme file for information regarding the settings configuration standards.\n")
         config = _gen_config_file(current_dir)
 
-    # run environment tests
-    # run structure tests
     # run solvers tests: both phases
+    # run structure test
     return
 
 
