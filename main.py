@@ -4,6 +4,7 @@ import json
 import logging
 
 from Scripts.gen_config_file import gen_file as _gen_config_file
+from Scripts.tests import *
 
 
 def check_requirements() -> None:
@@ -58,7 +59,12 @@ def main() -> None:
         config = _gen_config_file(current_dir)
 
     # run solvers tests: both phases
+    # spectral projected gradient test
+    run_test_spg()
+    # semi-definite positive program test
+    run_test_sdp()
     # run structure test
+    run_structure_test()
     return
 
 
