@@ -10,17 +10,21 @@ def gen_file(working_dir: str) -> dict:
     config = {'paths': {}, 'level': None, 'global_settings': {}}
 
     # get logger
-    logger = logging.getLogger('main._gen_config_file')
+    logger = logging.getLogger('main.gen_config_file')
 
     # user choice:
     logger.info(':: System Request: Please choose between Standard and Custom configuration.')
     logger.info(':: Insert (0) for Standard or (1) for Custom configuration:')
     choice = input('>> Inform your choice: ')
-    if type(choice) != int:
+    try:
+        choice = int(choice)
+    except Exception as e:
         choice = input('>> Inform your choice (only integers): ')
-    elif choice not in [0, 1]:
+        choice = int(choice)
+
+    if choice not in [0, 1]:
         logger.warning('>> System config: Invalid option!')
-        choice = input('>> Inform your choice (only integers): ')
+        choice = input('>> Inform your choice (0 or 1): ')
 
     elif choice == 0:
         # Standard mode
