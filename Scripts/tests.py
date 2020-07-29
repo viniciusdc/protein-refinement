@@ -1,10 +1,9 @@
-def run_test_spg():
-    return
+import os
+from Matlab.test import sdp_test
+from Scripts.spectral_projected_gradient import spg_test
 
 
-def run_test_sdp():
-    return
-
-
-def run_structure_test():
-    return
+def routine_test():
+    # run tests
+    spg_test()
+    sdp_test()

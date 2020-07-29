@@ -58,15 +58,11 @@ def main() -> None:
             ":: Please check the Readme file for information regarding the settings configuration standards.\n")
         config = _gen_config_file(current_dir)
 
-    # run solvers tests: both phases
-    # spectral projected gradient test
-    run_test_spg()
-    # semi-definite positive program test
-    run_test_sdp()
-    # run structure test
-    run_structure_test()
+    # TODO: general tests
+    routine_test()
+
     return
 
 
 if __name__ == '__main__':
-    main()
+    pass  # main()
