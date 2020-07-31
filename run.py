@@ -2,8 +2,14 @@ import os
 import logging
 import pathlib
 import json
+import argparse
 
 from datetime import datetime
+from Scripts.utils import get_proteins
+
+parser = argparse.ArgumentParser(description="A protein refinement method...")
+parser.add_argument("--filename", type=str, help="Input protein name")
+args_ops = parser.parse_args()
 
 
 def check_config():
@@ -30,7 +36,7 @@ def check_config():
             return exit(':: System Report: An error occurred loading the config.json file!')
 
 
-def main():
+def main(args):
     # ###################### Pre initialization #######################
     # Get the current working dir. path;
     current_dir = str(pathlib.Path().absolute())
@@ -63,9 +69,18 @@ def main():
     # ###################### Load configurations #######################
     # Check for config.json
     config = check_config()
+    proteins_path = config['paths']['proteins_path']
+
+    # check for load mode, the proteins dict contains the protein(s) name (aka, node) and it's directory path.
+    if args.filename:
+        # run in single mode (only one protein will be loaded)
+        proteins = get_proteins(proteins_path, single_mode=args.filename)
+    else:
+        # run file test-set (a list of proteins will be loaded)
+        proteins = get_proteins(proteins_path)
 
     return
 
 
 if __name__ == '__main__':
-    main()
+    main(args_ops)
