@@ -1,0 +1,4 @@
+2020-07-31 16:22:35,283 root                : INFO     :: System Report: The process has started on 2020-07-31 16:22:35.282675.
+2020-07-31 16:22:35,284 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2020-07-31 16:22:35,285 root.get_proteins   : INFO     :: System Report: Single mode enabled!
+2020-07-31 16:22:35,286 root.get_proteins   : WARNING  :: System Report : specified protein agatha could not be found at: E:\PycharmProjects\protein-refinement\Nodes!
