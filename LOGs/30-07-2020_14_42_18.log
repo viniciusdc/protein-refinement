@@ -1,0 +1,3 @@
+2020-07-30 14:42:18,509 root                : INFO     :: System Report: The process has started on 2020-07-30 14:42:18.507656.
+2020-07-30 14:42:18,509 config_check        : WARNING  :: System Report: Config.json file not found, possible first try run ?
+2020-07-30 14:42:18,509 config_check        : WARNING  :: System Report: as an attempt to solve the problem a new config.json will be created.

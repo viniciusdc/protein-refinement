@@ -1,9 +1,16 @@
 import logging
 import json
 import os
+import argparse
+import pathlib
+
+parser = argparse.ArgumentParser(description="Initial configurations set.")
+# overwrite sequence : config.json not found --> silent mode [on]
+parser.add_argument('--silent', default=False, help='[system flag]: enable standard config.json overwrite [bool].')
+ops = parser.parse_args()
 
 
-def gen_file(working_dir: str) -> dict:
+def gen_file(working_dir: str, args=ops) -> dict:
     """"This code generates the config.json file"""
 
     # defines the skeleton for the config dict
@@ -11,6 +18,17 @@ def gen_file(working_dir: str) -> dict:
 
     # get logger
     logger = logging.getLogger('main.gen_config_file')
+
+    # Overwrite sequence : silent mode on
+    if args.silent:
+        # Standard mode
+        config['paths'] = {'proteins_path': working_dir + '\\Nodes', 'tests_path': working_dir + '\\Tests'}
+        config['global_settings'] = {'disable_SPD': False, 'multi_start': False, 'statistics': True}
+
+        with open(f'{working_dir}\\config.json', 'w+') as file:
+            json.dump(config, file)
+
+        return config
 
     # user choice:
     logger.info(':: System Request: Please choose between Standard and Custom configuration.')
@@ -106,3 +124,10 @@ def gen_file(working_dir: str) -> dict:
         json.dump(config, file)
 
     return config
+
+
+if __name__ == '__main__':
+    # Get the current working dir./path;
+    current_dir = str(pathlib.Path().absolute()).replace('Scripts', '')
+    print(current_dir)
+    gen_file(current_dir, ops)

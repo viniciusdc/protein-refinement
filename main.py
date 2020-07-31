@@ -1,5 +1,4 @@
 import pathlib
-import os
 import json
 import logging
 
@@ -49,14 +48,14 @@ def main() -> None:
     if os.path.isfile(config_file_path):
         # Get the available configuration file;
         with open(config_file_path) as file:
-            config = json.load(file)
+            json.load(file)
         logger.info(":: System Report: Read configuration file complete.\n")
     else:
         logger.info(":: System Report: config.json file not found!")
         logger.info(":: System Report: Creating a new configuration...")
         logger.info(
             ":: Please check the Readme file for information regarding the settings configuration standards.\n")
-        config = _gen_config_file(current_dir)
+        _gen_config_file(current_dir)
 
     # TODO: general tests
     routine_test()
