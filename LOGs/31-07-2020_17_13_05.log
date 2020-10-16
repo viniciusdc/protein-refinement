@@ -1,0 +1,8 @@
+2020-07-31 17:13:05,875 root                : INFO     :: System Report: The process has started on 2020-07-31 17:13:05.874068.
+2020-07-31 17:13:05,875 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2020-07-31 17:13:05,875 root                : INFO     :: System Report: Creating the test directory.
+2020-07-31 17:13:05,876 root                : INFO     :: System Report: Checking operation mode and generating test node(s) path(s).
+2020-07-31 17:13:05,876 root.get_proteins   : INFO     :: System Report: Single mode enabled!
+2020-07-31 17:13:05,878 root.get_proteins   : INFO     :: System Report: Protein 2Y2A was successfully loaded.
+2020-07-31 17:13:05,879 root                : INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\31-07-2020_17_13_05\2Y2A successfully created.
+2020-07-31 17:13:05,879 root                : INFO     :: System Report: Creating the test(s) directory(s).

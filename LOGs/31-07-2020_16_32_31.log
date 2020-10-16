@@ -1,0 +1,4 @@
+2020-07-31 16:32:31,951 root                : INFO     :: System Report: The process has started on 2020-07-31 16:32:31.949857.
+2020-07-31 16:32:31,951 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2020-07-31 16:32:31,951 root.get_proteins   : INFO     :: System Report: Single mode enabled!
+2020-07-31 16:32:31,952 root.get_proteins   : INFO     :: System Report: Protein 2Y2A was successfully loaded.
