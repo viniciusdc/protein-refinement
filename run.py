@@ -71,13 +71,23 @@ def main(args):
     config = check_config()
     proteins_path = config['paths']['proteins_path']
 
+    # ###################### Start Tests Config #######################
+    logging.info(':: System Report: Creating the test directory.')
+
+    directory = f'\\Tests\\{current_time}'
+    test_path = current_dir + directory
+    # Create the directory
+    os.mkdir(test_path)
+
     # check for load mode, the proteins dict contains the protein(s) name (aka, node) and it's directory path.
+    logging.info(':: System Report: Checking operation mode and generating test node(s) path(s).')
+
     if args.filename:
         # run in single mode (only one protein will be loaded)
-        proteins = get_proteins(proteins_path, single_mode=args.filename)
+        proteins, test_proteins = get_proteins(proteins_path, test_path, single_mode=args.filename)
     else:
         # run file test-set (a list of proteins will be loaded)
-        proteins = get_proteins(proteins_path)
+        proteins, test_proteins = get_proteins(proteins_path, test_path)
 
     return
 
