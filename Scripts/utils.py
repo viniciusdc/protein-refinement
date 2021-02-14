@@ -3,11 +3,16 @@ import os
 import glob
 
 
-def get_proteins(path: str, test_path: str, single_mode: str = None) -> (dict, dict):
+def get_proteins(path: str, test_path: str, single_mode: str = None, black_list : dict = None) -> (dict, dict):
+    # First we will save the proteins names and paths to be read by the SDP Matlab script;
+    # And also, create the test paths for each one, saving it on a dictionary
     logger = logging.getLogger('root.get_proteins')
     if type(single_mode) == str:
         logger.info(':: System Report: Single mode enabled!')
         node = single_mode
+        # check if the given protein belongs to the black_list
+        if (black_list is not None) and (node in black_list.items()):
+            return exit(f':: System Exit Report: {__name__}.get_proteins received a black listed protein: {node}')
         # check if the given protein belongs to the specified 'path'
         if os.path.isdir(f'{path}\\{node}'):
             # get the directory of the chosen protein; dict(protein_name: its_dir);
@@ -33,6 +38,10 @@ def get_proteins(path: str, test_path: str, single_mode: str = None) -> (dict, d
         # Create the nodes test directories
         proteins_test_paths = {}
         for node in proteins.keys():
+            # check if the given protein belongs to the black_list
+            if (black_list is not None) and (node in black_list.items()):
+                logger.debug(f':: System Exit Report: {__name__}.get_proteins received a black listed protein: {node}')
+                pass
             # Create the node test directory
             os.makedirs(f'{test_path}\\{node}')
 
