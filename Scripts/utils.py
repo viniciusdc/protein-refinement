@@ -1,9 +1,10 @@
 import logging
+import numpy as np
 import os
 import glob
 
 
-def get_proteins(path: str, test_path: str, single_mode: str = None, black_list : dict = None) -> (dict, dict):
+def get_proteins(path: str, test_path: str, single_mode: str = None, black_list: dict = None) -> (dict, dict):
     # First we will save the proteins names and paths to be read by the SDP Matlab script;
     # And also, create the test paths for each one, saving it on a dictionary
     logger = logging.getLogger('root.get_proteins')
@@ -50,3 +51,24 @@ def get_proteins(path: str, test_path: str, single_mode: str = None, black_list 
             logger.info(f":: System Report: Directory {proteins_test_paths[f'{node}']} successfully created.")
 
     return proteins, proteins_test_paths
+
+
+def open_pdb_file(dir_pdb: str, debug_mode: bool = False):
+    """"This function aims to open the correspondent .pdb file for a given node."""
+    # Get the current logger
+    logger = logging.getLogger('root.utils.open_pdb')
+    if debug_mode:
+        logger.setLevel(10)
+    try:
+        # open PDB file (as an np-array):
+        pdb = np.genfromtxt(dir_pdb, dtype="str")
+
+    except FileNotFoundError as e:
+        logger.warning(":: System Report: PDB file not found!")
+        logger.error(f":: {e}")
+        pdb = []
+        logger.warning(":: System Report: The process was interrupted!")
+        # If no pdb file was found we can't proceed with this node.
+        return exit()
+    logger.debug(":: System Report: PDB file read complete!")
+    return pdb
