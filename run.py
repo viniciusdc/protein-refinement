@@ -5,7 +5,7 @@ import json
 import argparse
 
 from datetime import datetime
-from Scripts.utils import get_proteins
+from Scripts.utils import get_proteins, launch_sdp
 from Scripts.distance_file_gen import gen_distance_file
 
 parser = argparse.ArgumentParser(description="A protein refinement method...")
@@ -143,6 +143,12 @@ def main(args):
             distance.warning(":: System Error Report: The process was interrupted!")
             continue
     # ###################### Run Tests #######################
+    # ------------ Matlab: SDP Program
+    # SDP launch and start phase:
+    logging.info(':: System Report: Start [SDP].')
+    # prepare a structure file for he matlab bash script (SDP Execution);
+    launch_sdp(current_dir)
+    logging.debug(":: System Report: SDP completed! SPG environment configuration set.\n")
 
     return
 
