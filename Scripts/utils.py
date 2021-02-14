@@ -1,5 +1,6 @@
 import logging
 import numpy as np
+from subprocess import Popen, PIPE, STDOUT
 import os
 import glob
 
@@ -72,3 +73,34 @@ def open_pdb_file(dir_pdb: str, debug_mode: bool = False):
         return exit()
     logger.debug(":: System Report: PDB file read complete!")
     return pdb
+
+
+def launch_sdp(path):
+    """ This code creates de run bash line, to start the Matlab functions for the SDP program"""
+    # Get Logger
+    logger = logging.getLogger('root.utils.matlab_sdp')
+
+    # Look for the Matlab current working directory, and set the environment code for SDP;
+    # Get Matlab run bash line:
+    matlab_scripts = path + '\\Matlab\\PDB_aux.m'
+
+    # TODO: This code works for matlab R2019b and later. For earlier versions we should add an equivalent command.
+    run_command = 'matlab -batch "addpath(' + f"'{matlab_scripts}'); try sdpaux; catch ME; end" + '"'
+
+    # Run and wait for process finishes
+    try:
+        process = Popen(run_command, stdout=PIPE, stderr=STDOUT)
+        while True:
+            try:
+                line = process.stdout.readline()
+            except StopIteration:
+                break
+            if line != b'':
+                if isinstance(line, bytes):
+                    line = line.decode('utf-8')
+                logger.info(line.rstrip())
+            else:
+                break
+
+    except Exception as e:
+        logger.warning(f":: System Error Report: Attempt to run Matlab script failed with error: \n {e}.")
