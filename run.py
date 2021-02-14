@@ -10,9 +10,9 @@ from Scripts.distance_file_gen import gen_distance_file
 
 parser = argparse.ArgumentParser(description="A protein refinement method...")
 parser.add_argument("--filename", type=str, help="Input protein name")
-parser.add_argument(
-    "--input_format", type=str, help="Enable use of .pdb or dist.txt files as input"
-)
+# parser.add_argument(
+#    "--input_format", type=str, help="Enable use of .pdb or dist.txt files as input"
+# )
 args_ops = parser.parse_args()
 
 
@@ -124,23 +124,23 @@ def main(args):
     distance = logging.getLogger("root.distance_file")
     for node in test_proteins.keys():
         # distance file generator -- generates the distance file, if it doesn't exists, and returns it's directory:
-        if args.input_format == "dist_file":
-            # the user passed a 'valid' dist file as an input
-            pass
+        # if args.input_format == "dist_file":
+        #     # the user passed a 'valid' dist file as an input
+        #     pass
         try:
             # else, we should have access to the pdb file of node
             # TODO: Insert the overwrite=distance_overwrite option
             gen_distance_file(node, proteins[f"{node}"])
             distance.info(
-                ":: Process completed successfully, waiting for data to be read...\n"
+                ":: System Report: Process completed successfully, waiting for data to be read...\n"
             )
 
         except OSError as err:
             distance.warning(
-                f":: Distance file generator found an error with node: {node} \n"
+                f":: System Error Report: Distance file generator found an error with node: {node} \n"
                 f":: {err}."
             )
-            distance.warning(":: The process was interrupted!")
+            distance.warning(":: System Error Report: The process was interrupted!")
             continue
     # ###################### Run Tests #######################
 
