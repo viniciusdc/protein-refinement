@@ -20,7 +20,7 @@ def check_config():
     logger = logging.getLogger("root.config_check")
     """This verifies if the config.json file is available (if not, runs main.py)"""
     if os.path.isfile("config.json"):
-        logger.info(
+        logger.debug(
             ":: System Report: config.json file available, progressing to next phase."
         )
         with open("config.json") as file:
@@ -35,7 +35,7 @@ def check_config():
         )
         try:
             os.system("python Scripts/gen_config_file.py --silent=True")
-            logger.info(
+            logger.debug(
                 ":: System Report: A new config.json [standard] file was created."
             )
             # load config.json
@@ -90,7 +90,7 @@ def main(args):
     proteins_path = config["paths"]["proteins_path"]
 
     # ###################### Start Tests Config #######################
-    logging.info(":: System Report: Creating the test directory.")
+    logging.debug(":: System Report: Creating the test directory.")
 
     directory = f"\\Tests\\{current_time}"
     test_path = current_dir + directory
@@ -98,7 +98,7 @@ def main(args):
     os.mkdir(test_path)
 
     # check for load mode, the proteins dict contains the protein(s) name (aka, node) and it's directory path.
-    logging.info(
+    logging.debug(
         ":: System Report: Checking operation mode and generating test node(s) path(s)."
     )
 
@@ -112,7 +112,7 @@ def main(args):
         proteins, test_proteins = get_proteins(proteins_path, test_path)
 
     # Create the Node(s) test(s) directory(s) for the current test section
-    logging.info(":: System Report: Write Matlab protein input data")
+    logging.debug(":: System Report: Write Matlab protein input data")
 
     with open(current_dir + f"\\Matlab\\proteins.txt", "w+") as file:
         # Writes this information to Matlab usage
@@ -131,7 +131,7 @@ def main(args):
             # else, we should have access to the pdb file of node
             # TODO: Insert the overwrite=distance_overwrite option
             gen_distance_file(node, proteins[f"{node}"])
-            distance.info(
+            distance.debug(
                 ":: System Report: Process completed successfully, waiting for data to be read...\n"
             )
 

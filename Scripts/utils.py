@@ -8,9 +8,9 @@ import glob
 def get_proteins(path: str, test_path: str, single_mode: str = None, black_list: dict = None) -> (dict, dict):
     # First we will save the proteins names and paths to be read by the SDP Matlab script;
     # And also, create the test paths for each one, saving it on a dictionary
-    logger = logging.getLogger('root.get_proteins')
+    logger = logging.getLogger('root.utils.get_proteins')
     if type(single_mode) == str:
-        logger.info(':: System Report: Single mode enabled!')
+        logger.debug(':: System Report: Single mode enabled!')
         node = single_mode
         # check if the given protein belongs to the black_list
         if (black_list is not None) and (node in black_list.items()):
