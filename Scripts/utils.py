@@ -82,7 +82,13 @@ def launch_sdp(path):
 
     # Look for the Matlab current working directory, and set the environment code for SDP;
     # Get Matlab run bash line:
-    matlab_scripts = path + '\\Matlab\\PDB_aux.m'
+    matlab_scripts = path + '\\Matlab\\sdpaux.m'
+
+    if os.path.isfile(matlab_scripts):
+        pass
+    else:
+        logger.warning(':: System Error Report: Matlab auxiliary file method not found!')
+        return exit()
 
     # TODO: This code works for matlab R2019b and later. For earlier versions we should add an equivalent command.
     run_command = 'matlab -batch "addpath(' + f"'{matlab_scripts}'); try sdpaux; catch ME; end" + '"'
