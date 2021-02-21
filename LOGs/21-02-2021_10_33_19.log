@@ -1,0 +1,34 @@
+2021-02-21 10:33:19,847 root                : INFO     :: System Report: The process has started on 2021-02-21 10:33:19.846140.
+2021-02-21 10:33:19,847 root.config_check   : DEBUG    :: System Report: config.json file available, progressing to next phase.
+2021-02-21 10:33:19,847 root                : DEBUG    :: System Report: Creating the test directory.
+2021-02-21 10:33:19,847 root                : DEBUG    :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-02-21 10:33:19,847 root.utils.get_proteins: DEBUG    :: System Report: Single mode enabled!
+2021-02-21 10:33:19,858 root.utils.get_proteins: INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-02-21 10:33:19,871 root.utils.get_proteins: INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\21-02-2021_10_33_19\ubiq successfully created.
+2021-02-21 10:33:19,871 root                : DEBUG    :: System Report: Write Matlab protein input data
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    >> System Report: Looking for dist.txt file of node: ubiq...
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    >> System Report: One correspondence found... Loading dist.txt file.
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    :: System Report: Process completed successfully, waiting for data to be read...
+
+2021-02-21 10:33:19,880 root                : INFO     :: System Report: Start [SDP].
+2021-02-21 10:34:11,500 root.utils.matlab_sdp: INFO     # proteins.txt read complete!
+2021-02-21 10:34:11,505 root.utils.matlab_sdp: INFO     # Total number of nodes read: 1
+2021-02-21 10:34:11,506 root.utils.matlab_sdp: INFO     # Protein: ubiq
+2021-02-21 10:34:16,727 root.utils.matlab_sdp: INFO     # Distance file read: Complete
+2021-02-21 10:34:17,138 root.utils.matlab_sdp: INFO     # Number of used atoms: 964  Number of know distances: 2647 # All restricitons loaded
+2021-02-21 10:34:17,139 root.utils.matlab_sdp: INFO     Generating A(G) and B matrix...
+2021-02-21 10:34:45,271 root.utils.matlab_sdp: INFO     Completed generation for B matrix and b vector!
+2021-02-21 10:34:58,574 root.utils.matlab_sdp: INFO     Complete creation of matrix A(G)!
+2021-02-21 10:34:58,586 root.utils.matlab_sdp: INFO     SDPT3 - Start Solving.
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO     
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO      num. of constraints = 6258
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO      dim. of sdp    var  = 964,   num. of sdp  blk  =  1
+2021-02-21 10:35:02,512 root.utils.matlab_sdp: INFO      dim. of linear var  = 5294
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO        SDPT3: Infeasible path-following algorithms
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-02-21 10:35:02,527 root.utils.matlab_sdp: INFO      version  predcorr  gam  expon  scale_data
+2021-02-21 10:35:02,527 root.utils.matlab_sdp: INFO        HKM      1      0.000   1        0
+2021-02-21 10:35:02,528 root.utils.matlab_sdp: INFO     it pstep dstep pinfeas dinfeas  gap      prim-obj      dual-obj    cputime
+2021-02-21 10:35:02,528 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-02-21 10:35:08,205 root.utils.matlab_sdp: INFO      0|0.000|0.000|3.0e+03|1.7e+02|2.3e+09|-2.545717e+07  0.000000e+00| 0:0:02| spchol  1  1

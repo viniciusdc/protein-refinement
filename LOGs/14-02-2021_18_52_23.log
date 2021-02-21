@@ -1,0 +1,21 @@
+2021-02-14 18:52:23,646 root                : INFO     :: System Report: The process has started on 2021-02-14 18:52:23.645603.
+2021-02-14 18:52:23,647 root.config_check   : DEBUG    :: System Report: config.json file available, progressing to next phase.
+2021-02-14 18:52:23,647 root                : DEBUG    :: System Report: Creating the test directory.
+2021-02-14 18:52:23,648 root                : DEBUG    :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-02-14 18:52:23,648 root.utils.get_proteins: DEBUG    :: System Report: Single mode enabled!
+2021-02-14 18:52:23,649 root.utils.get_proteins: INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-02-14 18:52:23,649 root.utils.get_proteins: INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\14-02-2021_18_52_23\ubiq successfully created.
+2021-02-14 18:52:23,650 root                : DEBUG    :: System Report: Write Matlab protein input data
+2021-02-14 18:52:23,650 root.distance_file  : DEBUG    >> System Report: Looking for dist.txt file of node: ubiq...
+2021-02-14 18:52:23,650 root.distance_file  : DEBUG    >> System Report: One correspondence found... Loading dist.txt file.
+2021-02-14 18:52:23,650 root.distance_file  : DEBUG    :: System Report: Process completed successfully, waiting for data to be read...
+
+2021-02-14 18:52:23,650 root                : INFO     :: System Report: Start [SDP].
+2021-02-14 18:52:28,128 root.utils.matlab_sdp: INFO     # proteins.txt read complete!
+2021-02-14 18:52:28,129 root.utils.matlab_sdp: INFO     # Total number of nodes read: 1
+2021-02-14 18:52:28,130 root.utils.matlab_sdp: INFO     # Protein: ubiq
+2021-02-14 18:52:32,505 root.utils.matlab_sdp: INFO     # Distance file read: Complete
+2021-02-14 18:52:32,880 root.utils.matlab_sdp: INFO     # Number of used atoms: 947  Number of know distances: 2647 # All restricitons loaded
+2021-02-14 18:52:32,881 root.utils.matlab_sdp: INFO     Generating A(G) and B matrix...
+2021-02-14 18:52:47,454 root                : DEBUG    :: System Report: SDP completed! SPG environment configuration set.
+
