@@ -142,13 +142,14 @@ def main(args):
             )
             distance.warning(":: System Error Report: The process was interrupted!")
             continue
+
     # ###################### Run Tests #######################
     # ------------ Matlab: SDP Program
     # SDP launch and start phase:
-    logging.info(':: System Report: Start [SDP].')
+    logging.info(':: System Report: Start of [SDP] phase.')
     # prepare a structure file for he matlab bash script (SDP Execution);
     launch_sdp(current_dir)
-    logging.debug(":: System Report: SDP completed! SPG environment configuration set.\n")
+    logging.debug(":: System Report: [SDP] completed! [SPG] environment configuration set.\n")
 
     return
 
