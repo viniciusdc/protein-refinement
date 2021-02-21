@@ -144,14 +144,46 @@ def main(args):
             continue
 
     # ###################### Run Tests #######################
-    # ------------ Matlab: SDP Program
+    # ------------ [SDP] Pre-conformation phase ------------
     # SDP launch and start phase:
     logging.info(':: System Report: Start of [SDP] phase.')
     # prepare a structure file for he matlab bash script (SDP Execution);
     launch_sdp(current_dir)
     logging.debug(":: System Report: [SDP] completed! [SPG] environment configuration set.\n")
 
-    return
+    # ------------ [SPG] Refinement phase ------------
+    logging.info(':: System Report: Loading [SPG] entries.')
+    num_test_nodes = len(proteins.key())
+    nd_counter = 1  # node counter
+    for node in test_proteins.keys():
+        logging.info(f":: #{nd_counter} Node: {node} of {num_test_nodes}")
+        # --- Open PDB File
+        node_path = proteins[f'{node}']
+        pdb_path = node_path + f'\\{node}.txt'
+        dist_path = node_path + "\\dist.txt"
+        test_path = protein_tests[f'{node}']
+        if os.path.isfile(pdb_path):
+            pdb = open_pdb_file(pdb_path)
+        else:
+            # pdb file not available
+            pdb = []
+
+        logging.debug(':: Environmental properties successful loaded.')
+        distancias, u, v, lb, ub, prop_dist = env_set(dist_path, node)
+
+        # Now begins the refinement process of each protein
+        # SPG launch and start phase
+        logging.info(":: System Report: Start [SPG] program phase.")
+        options = (prop_dist, is_convex_relax, global_debug_value)
+
+        if args.multistart:
+            launch_spg(node, pdb, test_path, distancias, lb, ub, u, v, options, multi_start=True)
+        else:
+            launch_spg(node, pdb, test_path, distancias, lb, ub, u, v, options)
+        # -----
+        nd_counter += 1
+
+    # General Statistics
 
 
 if __name__ == "__main__":
