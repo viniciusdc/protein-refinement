@@ -110,3 +110,52 @@ def launch_sdp(path):
 
     except Exception as e:
         logger.warning(f":: System Error Report: Attempt to run Matlab script failed with error: \n {e}.")
+
+
+def env_set(raid: str, node: str, debug_mode: bool = False):
+    """"Prepares all the necessary variables for the [SPG] phase"""
+    # get current logger
+    logger = logging.getLogger('root.utils.env_set')
+    if debug_mode:
+        logger.setLevel(10)
+
+    # open distance file (as an np-array):
+    dist = []
+    try:
+        if os.path.isfile(raid + 'dist_wh.txt'):
+            # Van der Waals
+            dist = np.concatenate((np.genfromtxt(raid + 'dist.txt', dtype="str"),
+                                   np.genfromtxt(raid + 'dist_wh.txt', dtype="str")))
+        else:
+            dist = np.genfromtxt(raid + 'dist.txt', dtype="str")
+    except Exception as error:
+        logger.warning(f':: System Error Report: Could not load {node} distance file.')
+        logger.error(f':: {error}')
+    logger.debug(f":: System Report: Distance file read completed!")
+
+    # parse distances (when Wander Wauss distances available)
+    # index vectors (for atom pairs [u, v]):
+    u, v = (
+        np.array(dist[:, 0], dtype="int"),
+        np.array(dist[:, 1], dtype="int"),
+    )
+    # it starts from zero on python
+    u = u - np.ones(len(u), dtype="int")
+    v = v - np.ones(len(v), dtype="int")
+
+    # lower and upper bounds vectors:
+    lb, ub = (
+        np.array(dist[:, 8], dtype="float"),
+        np.array(dist[:, 9], dtype="float"),
+    )
+
+    prop_dist = 0
+    for k in range(len(u)):
+        if int(dist[k][-1]) == 1:
+            prop_dist += 1
+    prop_dist = int(prop_dist)
+
+    # Log archive
+    logger.debug(":: Process completed successfully, waiting for data to be read...")
+    comp = {'dist': dist, 'u': u, 'v': v, 'lb': lb, 'ub': ub, 'prop_dist': prop_dist}
+    return comp
