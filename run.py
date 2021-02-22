@@ -154,7 +154,7 @@ def main(args):
 
     # ------------ [SPG] Refinement phase ------------
     logging.info(':: System Report: Loading [SPG] entries.')
-    num_test_nodes = len(proteins.key())
+    num_test_nodes = len(proteins.keys())
     nd_counter = 1  # node counter
     for node in test_proteins.keys():
         logging.info(f":: #{nd_counter} Node: {node} of {num_test_nodes}")
