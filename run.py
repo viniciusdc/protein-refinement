@@ -5,7 +5,8 @@ import json
 import argparse
 
 from datetime import datetime
-from Scripts.utils import get_proteins, launch_sdp
+from Scripts.utils import get_proteins, launch_sdp, open_pdb_file, env_set
+from Scripts.run_spg import launch_spg
 from Scripts.distance_file_gen import gen_distance_file
 
 parser = argparse.ArgumentParser(description="A protein refinement method...")
@@ -160,8 +161,8 @@ def main(args):
         # --- Open PDB File
         node_path = proteins[f'{node}']
         pdb_path = node_path + f'\\{node}.txt'
-        dist_path = node_path + "\\dist.txt"
-        test_path = protein_tests[f'{node}']
+        # dist_path = node_path + "\\dist.txt"
+        test_path = test_proteins[node]
         if os.path.isfile(pdb_path):
             pdb = open_pdb_file(pdb_path)
         else:
@@ -169,17 +170,17 @@ def main(args):
             pdb = []
 
         logging.debug(':: Environmental properties successful loaded.')
-        distancias, u, v, lb, ub, prop_dist = env_set(dist_path, node)
+        comp = env_set(node_path, node)
+        # distancias, u, v, lb, ub, prop_dist = env_set(node_path, node)
 
         # Now begins the refinement process of each protein
         # SPG launch and start phase
         logging.info(":: System Report: Start [SPG] program phase.")
-        options = (prop_dist, is_convex_relax, global_debug_value)
 
         if args.multistart:
-            launch_spg(node, pdb, test_path, distancias, lb, ub, u, v, options, multi_start=True)
+            launch_spg(node, pdb, test_path, comp, multi_start=True)
         else:
-            launch_spg(node, pdb, test_path, distancias, lb, ub, u, v, options)
+            launch_spg(node, pdb, test_path, comp)
         # -----
         nd_counter += 1
 
