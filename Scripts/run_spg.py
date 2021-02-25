@@ -1,17 +1,21 @@
 import numpy as np
+import logging
 
 
-def launch_spg(node, pdb, test_path, comp, multi_start=False):
+def launch_spg(node, pdb, test_path, comp: dict, multi_start=False):
     """This method aims to create all the environment variables to execute the spectral gradient method."""
     # Get run options
-    (prop_dist, is_convex_relax, debug_mode) = config_ops
+    prop_dist = comp.get('prop_dist')
+    u, v = comp.get('u'), comp.get('v')
+    lb, ub = comp.get('lb'), comp.get('ub')
+    dist = comp.get('dist')
     # Get logger
-    logger = logging.getLogger('root.load_spg')
-    if debug_mode:
-        logger.setLevel('DEBUG')
+    logger = logging.getLogger('root.run_spg.launch_spg')
+    # if debug_mode:
+    #     logger.setLevel('DEBUG')
 
     # Adjust variables:
-    Noise, TOL, N, M, w = 1e1, 1e-6, 2000, 15, np.ones(len(lb))
+    noise, tol, big_n, big_m, w = 1e1, 1e-6, 2000, 15, np.ones(len(lb))
     num_atom_init = int(len(pdb[:, 1]))
     # Noise :: Degree of disturbance of the expected solution;
     # TOL :: tolerance for the SPG;
@@ -25,6 +29,8 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
     solution = centralizar(solution)
 
     # Initial point origin:
+    # TODO: rm is convex args, as its not supported anymore
+    # TODO: Check statistics behavior and dual dist file compatibility
     if is_convex_relax:
         logger.info(":: Initial point --Originated from convex relaxation")
         try:
@@ -55,7 +61,7 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
             fo_scaled, fo_non_scaled, xi = 0, 0, []
     else:
         logger.debug(":: Generating initial point file using a perturbed expected solution.")
-        xi = Noise * np.random.normal(0, 1, solution.shape)
+        xi = noise * np.random.normal(0, 1, solution.shape)
         xi = xi + solution
         xi = np.array(xi)
         xi = centralizar(xi)
@@ -66,7 +72,7 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
         data = {}
         try:
             logger.info(f":: Multi-start option --Enable {10}x times")
-            logger.info(f":: maximum iterations: {N}, tol: {TOL} and memory: {M}")
+            logger.info(f":: maximum iterations: {big_n}, tol: {tol} and memory: {big_m}")
             # multi start option enable, initial distance vector will be set as in multi-start definition
             yi = dist_matrix_projection(int(len(u)), u, v, lb, ub, xi)
             to = time()
@@ -75,7 +81,7 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
                 grad_stress,
                 xi,
                 yi,
-                [u, v, w, lb, ub, TOL, N, M],
+                [u, v, w, lb, ub, tol, big_n, big_m],
                 debug_mode=debug_mode,
             )
             elapsed_time = time() - to
@@ -95,7 +101,7 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
                     grad_stress,
                     xi,
                     yi,
-                    [u, v, w, lb, ub, TOL, N, M],
+                    [u, v, w, lb, ub, tol, big_n, big_m],
                     debug_mode=debug_mode,
                 )
                 elapsed_time = time() - to
@@ -139,14 +145,14 @@ def launch_spg(node, pdb, test_path, comp, multi_start=False):
         if debug_mode:
             logger.debug(":: --True")
         try:
-            logger.info(f":: maximum iterations: {N}, tol: {TOL} and memory: {M}")
+            logger.info(f":: maximum iterations: {big_n}, tol: {tol} and memory: {big_m}")
             to = time()
             out = protein_spg(
                 stress,
                 grad_stress,
                 xi,
                 yi,
-                [u, v, w, lb, ub, TOL, N, M],
+                [u, v, w, lb, ub, tol, big_n, big_m],
                 debug_mode=debug_mode,
             )
             elapsed_time = time() - to
