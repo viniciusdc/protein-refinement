@@ -1,0 +1,73 @@
+2021-03-06 00:11:43,469 root                : INFO     :: System Report: The process has started on 2021-03-06 00:11:43.469564.
+2021-03-06 00:11:43,470 root.config_check   : DEBUG    :: System Report: config.json file available, progressing to next phase.
+2021-03-06 00:11:43,470 root                : DEBUG    :: System Report: Creating the test directory.
+2021-03-06 00:11:43,470 root                : DEBUG    :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-03-06 00:11:43,470 root.utils.get_proteins: DEBUG    :: System Report: Single mode enabled!
+2021-03-06 00:11:43,470 root.utils.get_proteins: INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-03-06 00:11:43,470 root.utils.get_proteins: INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\05-03-2021_22_01_08\ubiq successfully created.
+2021-03-06 00:11:43,471 root                : INFO     :: System Report: Loading [SPG] entries.
+2021-03-06 00:11:43,471 root                : INFO     :: #1 Node: ubiq of 1
+2021-03-06 00:11:43,471 root                : DEBUG    :: Environmental properties successful loaded.
+2021-03-06 00:11:48,716 root.utils.env_set  : DEBUG    :: System Report: Distance file read completed!
+2021-03-06 00:11:49,390 root.utils.env_set  : DEBUG    :: Process completed successfully, waiting for data to be read...
+2021-03-06 00:11:49,390 root                : INFO     :: System Report: Start [SPG] program phase.
+2021-03-06 00:11:51,719 root                : DEBUG    :: The process of reformatting/re-ordination was successfully completed in 2.0546s
+2021-03-06 00:11:51,856 root.run_spg.launch_spg: DEBUG    :: relax_k file read complete.
+2021-03-06 00:11:52,600 root.run_spg.launch_spg: DEBUG    :: relax_np file read complete.
+2021-03-06 00:12:25,677 root.run_spg.launch_spg: INFO     :: maximum iterations: 2000, tol: 1e-06 and memory: 15
+2021-03-06 00:12:32,891 root.load_spg.spg   : INFO     >> Iter - Obj ------ GtD ------ |d| ------ pB ------ alpha ----
+2021-03-06 00:13:05,420 root.load_spg.spg   : INFO     >> 0    : 2.154e+05  -4.424e+08 4.424e+08  1.000e+00  0.0009765625
+2021-03-06 00:13:13,846 root.load_spg.spg   : INFO     >> 1    : 1.099e+05  -2.032e+05 1.291e+02  1.573e+03  1.0       
+2021-03-06 00:13:22,310 root.load_spg.spg   : INFO     >> 2    : 9.082e+04  -2.602e+04 1.716e+01  1.516e+03  1.0       
+2021-03-06 00:13:30,892 root.load_spg.spg   : INFO     >> 3    : 6.704e+04  -2.576e+04 3.104e+01  8.297e+02  1.0       
+2021-03-06 00:13:39,286 root.load_spg.spg   : INFO     >> 4    : 5.708e+04  -5.594e+04 1.838e+02  3.043e+02  1.0       
+2021-03-06 00:13:47,658 root.load_spg.spg   : INFO     >> 5    : 5.399e+04  -6.483e+04 1.064e+02  6.092e+02  1.0       
+2021-03-06 00:13:56,120 root.load_spg.spg   : INFO     >> 6    : 4.205e+04  -4.837e+04 4.772e+01  1.014e+03  1.0       
+2021-03-06 00:14:05,281 root.load_spg.spg   : INFO     >> 7    : 3.706e+04  -9.914e+03 6.457e+00  1.535e+03  1.0       
+2021-03-06 00:14:14,819 root.load_spg.spg   : INFO     >> 8    : 3.683e+04  -2.643e+02 1.738e-01  1.521e+03  1.0       
+2021-03-06 00:14:23,935 root.load_spg.spg   : INFO     >> 9    : 3.650e+04  -5.232e+02 1.219e+00  4.292e+02  1.0       
+2021-03-06 00:14:33,608 root.load_spg.spg   : INFO     >> 10   : 3.635e+04  -2.205e+02 7.262e-01  3.037e+02  1.0       
+2021-03-06 00:14:42,204 root.load_spg.spg   : INFO     >> 11   : 3.648e+04  -2.449e+02 1.164e+00  2.103e+02  1.0       
+2021-03-06 00:14:51,230 root.load_spg.spg   : INFO     >> 12   : 3.663e+04  -1.061e+03 1.648e+00  6.435e+02  1.0       
+2021-03-06 00:15:00,408 root.load_spg.spg   : INFO     >> 13   : 3.621e+04  -8.918e+02 6.080e-01  1.467e+03  1.0       
+2021-03-06 00:15:09,500 root.load_spg.spg   : INFO     >> 14   : 3.620e+04  -1.336e+01 8.530e-03  1.566e+03  1.0       
+2021-03-06 00:15:18,593 root.load_spg.spg   : INFO     >> 15   : 3.618e+04  -2.054e+01 3.348e-02  6.134e+02  1.0       
+2021-03-06 00:15:27,322 root.load_spg.spg   : INFO     >> 16   : 3.623e+04  -5.021e+02 2.143e+01  2.343e+01  1.0       
+2021-03-06 00:15:35,787 root.load_spg.spg   : INFO     >> 17   : 5.889e+04  -8.163e+03 1.029e+02  7.934e+01  1.0       
+2021-03-06 00:15:47,456 root.load_spg.spg   : INFO     >> 18   : 4.258e+04  -1.373e+05 2.717e+02  5.054e+02  0.5       
+2021-03-06 00:15:55,704 root.load_spg.spg   : INFO     >> 19   : 3.615e+04  -1.319e+04 8.619e+00  1.530e+03  1.0       
+2021-03-06 00:16:04,293 root.load_spg.spg   : INFO     >> 20   : 3.607e+04  -9.336e+01 5.955e-02  1.568e+03  1.0       
+2021-03-06 00:16:12,804 root.load_spg.spg   : INFO     >> 21   : 3.594e+04  -1.738e+02 3.558e-01  4.887e+02  1.0       
+2021-03-06 00:16:21,666 root.load_spg.spg   : INFO     >> 22   : 3.583e+04  -1.620e+02 7.419e-01  2.183e+02  1.0       
+2021-03-06 00:16:29,938 root.load_spg.spg   : INFO     >> 23   : 3.583e+04  -1.293e+02 9.979e-01  1.296e+02  1.0       
+2021-03-06 00:16:38,266 root.load_spg.spg   : INFO     >> 24   : 3.665e+04  -6.811e+02 2.428e+00  2.805e+02  1.0       
+2021-03-06 00:16:46,728 root.load_spg.spg   : INFO     >> 25   : 3.581e+04  -2.260e+03 1.848e+00  1.223e+03  1.0       
+2021-03-06 00:16:55,505 root.load_spg.spg   : INFO     >> 26   : 3.572e+04  -1.679e+02 1.091e-01  1.539e+03  1.0       
+2021-03-06 00:17:03,762 root.load_spg.spg   : INFO     >> 27   : 3.571e+04  -1.016e+01 7.018e-03  1.448e+03  1.0       
+2021-03-06 00:17:12,431 root.load_spg.spg   : INFO     >> 28   : 3.570e+04  -1.873e+01 4.348e-02  4.308e+02  1.0       
+2021-03-06 00:17:21,514 root.load_spg.spg   : INFO     >> 29   : 3.568e+04  -2.590e+01 1.136e-01  2.280e+02  1.0       
+2021-03-06 00:17:30,449 root.load_spg.spg   : INFO     >> 30   : 3.571e+04  -7.730e+01 7.618e-01  1.015e+02  1.0       
+2021-03-06 00:17:39,930 root.load_spg.spg   : INFO     >> 31   : 3.598e+04  -4.590e+02 1.599e+00  2.871e+02  1.0       
+2021-03-06 00:17:49,246 root.load_spg.spg   : INFO     >> 32   : 3.576e+04  -1.029e+03 1.126e+00  9.137e+02  1.0       
+2021-03-06 00:17:58,035 root.load_spg.spg   : INFO     >> 33   : 3.561e+04  -3.061e+02 2.143e-01  1.428e+03  1.0       
+2021-03-06 00:18:06,599 root.load_spg.spg   : INFO     >> 34   : 3.561e+04  -7.777e+00 5.035e-03  1.545e+03  1.0       
+2021-03-06 00:18:15,136 root.load_spg.spg   : INFO     >> 35   : 3.560e+04  -6.190e+00 7.629e-03  8.114e+02  1.0       
+2021-03-06 00:18:23,848 root.load_spg.spg   : INFO     >> 36   : 3.558e+04  -2.707e+01 1.864e-01  1.452e+02  1.0       
+2021-03-06 00:18:32,417 root.load_spg.spg   : INFO     >> 37   : 3.637e+04  -2.130e+02 1.116e+01  1.908e+01  1.0       
+2021-03-06 00:18:47,788 root.load_spg.spg   : INFO     >> 38   : 3.595e+04  -1.061e+04 5.236e+01  2.027e+02  0.25      
+2021-03-06 00:18:56,927 root.load_spg.spg   : INFO     >> 39   : 3.547e+04  -1.136e+03 8.368e-01  1.357e+03  1.0       
+2021-03-06 00:19:05,636 root.load_spg.spg   : INFO     >> 40   : 3.545e+04  -3.647e+01 2.341e-02  1.558e+03  1.0       
+2021-03-06 00:19:14,308 root.load_spg.spg   : INFO     >> 41   : 3.544e+04  -8.178e+00 6.619e-03  1.236e+03  1.0       
+2021-03-06 00:19:23,188 root.load_spg.spg   : INFO     >> 42   : 3.542e+04  -2.850e+01 1.176e-01  2.423e+02  1.0       
+2021-03-06 00:19:31,956 root.load_spg.spg   : INFO     >> 43   : 3.541e+04  -3.233e+01 2.085e-01  1.551e+02  1.0       
+2021-03-06 00:19:40,731 root.load_spg.spg   : INFO     >> 44   : 3.543e+04  -7.758e+01 3.417e-01  2.270e+02  1.0       
+2021-03-06 00:19:49,285 root.load_spg.spg   : INFO     >> 45   : 3.539e+04  -1.076e+02 1.888e-01  5.699e+02  1.0       
+2021-03-06 00:19:58,165 root.load_spg.spg   : INFO     >> 46   : 3.539e+04  -3.372e+01 4.523e-02  7.455e+02  1.0       
+2021-03-06 00:20:07,022 root.load_spg.spg   : INFO     >> 47   : 3.538e+04  -2.093e+01 1.504e-02  1.391e+03  1.0       
+2021-03-06 00:20:15,628 root.load_spg.spg   : INFO     >> 48   : 3.538e+04  -1.755e+00 1.196e-03  1.468e+03  1.0       
+2021-03-06 00:20:24,059 root.load_spg.spg   : INFO     >> 49   : 3.537e+04  -6.518e+00 2.068e-02  3.152e+02  1.0       
+2021-03-06 00:20:32,530 root.load_spg.spg   : INFO     >> 50   : 3.545e+04  -1.803e+02 1.610e+01  1.120e+01  1.0       
+2021-03-06 00:20:53,005 root.load_spg.spg   : INFO     >> 51   : 3.634e+04  -1.702e+04 6.842e+02  2.488e+01  0.0625    
+2021-03-06 00:21:01,402 root.load_spg.spg   : INFO     >> 52   : 3.528e+04  -2.312e+03 1.579e+00  1.464e+03  1.0       
+2021-03-06 00:21:10,137 root.load_spg.spg   : INFO     >> 53   : 3.527e+04  -1.850e+01 1.173e-02  1.577e+03  1.0       
+2021-03-06 00:21:18,432 root.load_spg.spg   : INFO     >> 54   : 3.526e+04  -5.086e+00 4.170e-03  1.220e+03  1.0       

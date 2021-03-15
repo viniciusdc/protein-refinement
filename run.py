@@ -177,10 +177,7 @@ def main(args):
         # SPG launch and start phase
         logging.info(":: System Report: Start [SPG] program phase.")
 
-        if args.multistart:
-            launch_spg(node, pdb, test_path, comp, multi_start=True)
-        else:
-            launch_spg(node, pdb, test_path, comp)
+        launch_spg(node, pdb, test_path, comp)
         # -----
         nd_counter += 1
 

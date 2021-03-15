@@ -1,0 +1,96 @@
+2021-03-05 13:53:07,013 root                : INFO     :: System Report: The process has started on 2021-03-05 13:53:07.013836.
+2021-03-05 13:53:07,014 root.config_check   : DEBUG    :: System Report: config.json file available, progressing to next phase.
+2021-03-05 13:53:07,014 root                : DEBUG    :: System Report: Creating the test directory.
+2021-03-05 13:53:07,014 root                : DEBUG    :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-03-05 13:53:07,014 root.utils.get_proteins: DEBUG    :: System Report: Single mode enabled!
+2021-03-05 13:53:07,016 root.utils.get_proteins: INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-03-05 13:53:07,016 root.utils.get_proteins: INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\05-03-2021_13_53_07\ubiq successfully created.
+2021-03-05 13:53:07,016 root                : DEBUG    :: System Report: Write Matlab protein input data
+2021-03-05 13:53:07,016 root.distance_file  : DEBUG    >> System Report: Looking for dist.txt file of node: ubiq...
+2021-03-05 13:53:07,016 root.distance_file  : DEBUG    >> System Report: One correspondence found... Loading dist.txt file.
+2021-03-05 13:53:07,016 root.distance_file  : DEBUG    :: System Report: Process completed successfully, waiting for data to be read...
+
+2021-03-05 13:53:07,017 root                : INFO     :: System Report: Start of [SDP] phase.
+2021-03-05 13:53:11,280 root.utils.matlab_sdp: INFO     # proteins.txt read complete!
+2021-03-05 13:53:11,281 root.utils.matlab_sdp: INFO     # Total number of nodes read: 1
+2021-03-05 13:53:11,281 root.utils.matlab_sdp: INFO     # Protein: ubiq
+2021-03-05 13:53:12,342 root.utils.matlab_sdp: INFO     # Distance file read: Complete
+2021-03-05 13:53:12,485 root.utils.matlab_sdp: INFO     # Number of used atoms: 964  Number of know distances: 1280 # All restricitons loaded
+2021-03-05 13:53:12,485 root.utils.matlab_sdp: INFO     Generating A(G) and B matrix...
+2021-03-05 13:53:23,960 root.utils.matlab_sdp: INFO     Completed generation for B matrix and b vector!
+2021-03-05 13:53:36,258 root.utils.matlab_sdp: INFO     Complete creation of matrix A(G)!
+2021-03-05 13:53:36,271 root.utils.matlab_sdp: INFO     SDPT3 - Start Solving.
+2021-03-05 13:53:36,334 root.utils.matlab_sdp: INFO     
+2021-03-05 13:53:36,334 root.utils.matlab_sdp: INFO      num. of constraints = 3524
+2021-03-05 13:53:36,334 root.utils.matlab_sdp: INFO      dim. of sdp    var  = 964,   num. of sdp  blk  =  1
+2021-03-05 13:53:37,530 root.utils.matlab_sdp: INFO      dim. of linear var  = 2560
+2021-03-05 13:53:37,530 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-03-05 13:53:37,530 root.utils.matlab_sdp: INFO        SDPT3: Infeasible path-following algorithms
+2021-03-05 13:53:37,531 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-03-05 13:53:37,537 root.utils.matlab_sdp: INFO      version  predcorr  gam  expon  scale_data
+2021-03-05 13:53:37,538 root.utils.matlab_sdp: INFO        HKM      1      0.000   1        0
+2021-03-05 13:53:37,538 root.utils.matlab_sdp: INFO     it pstep dstep pinfeas dinfeas  gap      prim-obj      dual-obj    cputime
+2021-03-05 13:53:37,538 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-03-05 13:53:41,378 root.utils.matlab_sdp: INFO      0|0.000|0.000|4.5e+03|9.1e+01|5.3e+08|-9.550132e+06  0.000000e+00| 0:0:01| spchol  1  1
+2021-03-05 13:54:09,672 root.utils.matlab_sdp: INFO      1|0.806|0.948|8.8e+02|5.2e+00|8.0e+07|-5.443578e+06 -1.135897e+05| 0:0:05| chol  1  1
+2021-03-05 13:54:38,320 root.utils.matlab_sdp: INFO      2|0.794|0.625|1.8e+02|2.1e+00|1.8e+07|-8.553270e+06 -1.419849e+05| 0:0:33| chol  1  1
+2021-03-05 13:55:08,730 root.utils.matlab_sdp: INFO      3|0.636|0.063|6.6e+01|2.0e+00|1.4e+07|-1.057099e+09 -1.482217e+05| 0:1:02| chol  1  1
+2021-03-05 13:55:40,111 root.utils.matlab_sdp: INFO      4|0.432|0.006|3.8e+01|2.0e+00|6.6e+09|-1.004842e+13 -1.504343e+05| 0:1:32| chol  1  2
+2021-03-05 13:56:11,463 root.utils.matlab_sdp: INFO      5|0.002|0.001|3.8e+01|2.0e+00|2.8e+12|-4.279871e+16 -3.307786e+05| 0:2:03| chol
+2021-03-05 13:56:11,464 root.utils.matlab_sdp: INFO       linsysolve: Schur complement matrix not positive definite
+2021-03-05 13:56:13,257 root.utils.matlab_sdp: INFO       switch to LU factor. lu 30 ^ 3
+2021-03-05 13:56:44,028 root.utils.matlab_sdp: INFO      6|0.000|0.000|7.9e+01|2.0e+00|2.6e+14|-4.069524e+18 -3.309200e+05| 0:2:37| lu 13 ^15
+2021-03-05 13:57:14,051 root.utils.matlab_sdp: INFO      7|0.000|0.000|9.0e+02|2.0e+00|3.5e+15|-5.439964e+19 -3.307737e+05| 0:3:07| lu 11  30
+2021-03-05 13:57:44,539 root.utils.matlab_sdp: INFO      8|0.000|0.000|9.1e+02|2.0e+00|3.5e+15|-5.439974e+19 -3.307737e+05| 0:3:37| lu 30 ^26
+2021-03-05 13:58:14,197 root.utils.matlab_sdp: INFO      9|0.000|0.000|9.1e+02|2.0e+00|3.5e+15|-5.440197e+19 -3.307740e+05| 0:4:08| lu 30 ^14
+2021-03-05 13:58:44,668 root.utils.matlab_sdp: INFO     10|0.000|0.000|9.1e+02|2.0e+00|3.5e+15|-5.444418e+19 -3.307729e+05| 0:4:37| lu 30  30
+2021-03-05 13:59:15,224 root.utils.matlab_sdp: INFO     11|0.000|0.000|1.0e+03|2.0e+00|3.6e+15|-5.500612e+19 -3.307756e+05| 0:5:08| lu 30  30
+2021-03-05 13:59:45,038 root.utils.matlab_sdp: INFO     12|0.000|0.000|1.0e+03|2.0e+00|3.6e+15|-5.500675e+19 -3.307760e+05| 0:5:38| lu 30
+2021-03-05 13:59:45,039 root.utils.matlab_sdp: INFO       stop: steps in predictor too short: pstep = 9.77e-07,  dstep = 1.74e-05
+2021-03-05 13:59:45,070 root.utils.matlab_sdp: INFO     
+2021-03-05 13:59:45,123 root.utils.matlab_sdp: INFO     13|0.000|0.000|1.0e+03|2.0e+00|3.6e+15|-5.500675e+19 -3.307760e+05| 0:6:08|
+2021-03-05 13:59:45,123 root.utils.matlab_sdp: INFO       prim_inf,dual_inf,relgap = 1.02e+03, 1.97e+00, 6.46e-05
+2021-03-05 13:59:45,146 root.utils.matlab_sdp: INFO       sqlp stop: dual problem is suspected of being infeasible
+2021-03-05 13:59:45,147 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-03-05 13:59:45,147 root.utils.matlab_sdp: INFO      number of iterations   = 13
+2021-03-05 13:59:45,147 root.utils.matlab_sdp: INFO      residual of dual infeasibility
+2021-03-05 13:59:45,148 root.utils.matlab_sdp: INFO      certificate X          = 3.10e-02
+2021-03-05 13:59:45,148 root.utils.matlab_sdp: INFO      reldist to infeas.    <= 4.41e-04
+2021-03-05 13:59:45,148 root.utils.matlab_sdp: INFO      Total CPU time (secs)  = 368.32
+2021-03-05 13:59:45,149 root.utils.matlab_sdp: INFO      CPU time per iteration = 28.33
+2021-03-05 13:59:45,150 root.utils.matlab_sdp: INFO      termination code       =  2
+2021-03-05 13:59:45,151 root.utils.matlab_sdp: INFO      DIMACS errors: 1.5e+03  0.0e+00  3.4e+01  0.0e+00  -9.7e-01  2.1e+00
+2021-03-05 13:59:45,151 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-03-05 13:59:45,178 root.utils.matlab_sdp: INFO     >> Solver conclusion: sqlp stop: dual problem is suspected of being infeasible
+2021-03-05 13:59:45,178 root.utils.matlab_sdp: INFO     # Get spectral decomposition of solution
+2021-03-05 13:59:45,265 root.utils.matlab_sdp: INFO     # Generating output files from obtained solutions
+2021-03-05 13:59:45,892 root.utils.matlab_sdp: INFO     # Process completed successfully!
+2021-03-05 13:59:45,892 root.utils.matlab_sdp: INFO     ------------------------------------------------------
+2021-03-05 13:59:45,895 root.utils.matlab_sdp: INFO     # The [SDP] process was successfully completed !
+2021-03-05 13:59:47,930 root                : DEBUG    :: System Report: [SDP] completed! [SPG] environment configuration set.
+
+2021-03-05 13:59:47,931 root                : INFO     :: System Report: Loading [SPG] entries.
+2021-03-05 13:59:47,931 root                : INFO     :: #1 Node: ubiq of 1
+2021-03-05 13:59:47,931 root                : DEBUG    :: Environmental properties successful loaded.
+2021-03-05 13:59:47,946 root.utils.env_set  : DEBUG    :: System Report: Distance file read completed!
+2021-03-05 13:59:47,949 root.utils.env_set  : DEBUG    :: Process completed successfully, waiting for data to be read...
+2021-03-05 13:59:47,949 root                : INFO     :: System Report: Start [SPG] program phase.
+2021-03-05 13:59:47,958 root                : DEBUG    :: The process of reformatting/re-ordination was successfully completed in 0.0080s
+2021-03-05 13:59:47,966 root.run_spg.launch_spg: DEBUG    :: relax_k file read complete.
+2021-03-05 13:59:48,746 root.run_spg.launch_spg: DEBUG    :: relax_np file read complete.
+2021-03-05 13:59:50,388 root.run_spg.launch_spg: INFO     :: maximum iterations: 2000, tol: 1e-06 and memory: 15
+2021-03-05 13:59:50,405 root.load_spg.spg   : DEBUG    >> Iter - Obj ------ GtD ------ |d| ------ pB ------ alpha ----
+2021-03-05 13:59:50,408 root.load_spg.spg   : INFO     >> Product --Gradient x direction-- less than tolerance 1e-06!
+2021-03-05 13:59:50,414 root.run_spg.launch_spg: INFO     :: Solution found!
+2021-03-05 13:59:50,417 root.run_spg.launch_spg: INFO     :: Standard phase of node: ubiq complete.
+
+2021-03-05 13:59:50,417 root.spgLOG         : INFO     ##########################################  INFO  ##########################################
+2021-03-05 13:59:50,417 root.spgLOG         : INFO     :: Protein: ubiq, Initial atoms number: 1280, after re-ordination.
+2021-03-05 13:59:50,417 root.spgLOG         : INFO     :: Assessed distances: 1280 and known distances: 1280.
+2021-03-05 13:59:50,417 root.spgLOG         : INFO     :: Initial objective value for the relaxed problem: 4.9411e+03
+2021-03-05 13:59:50,418 root.spgLOG         : INFO     :: Initial objective value for the relaxed problem --scaled 4.9871e+03
+2021-03-05 13:59:50,425 root.spgLOG         : INFO     :: MDEi = 1.00e+00
+2021-03-05 13:59:50,432 root.spgLOG         : INFO     :: spg results --multi start: False
+2021-03-05 13:59:50,433 root.spgLOG         : INFO     :: Iter - bck ----- MDEf ----- i_val ----- f_val ----- gtd ----- |d| ----- time(s)
+2021-03-05 13:59:50,433 root.spgLOG         : INFO        0    : 0      1.00e+00   2.49e+03    2.49e+03   0.00e+00   0.00e+00   0.020
+2021-03-05 13:59:50,433 root.spgLOG         : INFO     ############################################################################################

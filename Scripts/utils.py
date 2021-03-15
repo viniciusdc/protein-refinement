@@ -1,8 +1,12 @@
 import logging
 import numpy as np
 from subprocess import Popen, PIPE, STDOUT
+import random
 import os
 import glob
+from numpy.linalg import svd
+from time import time
+from numpy.core.umath_tests import inner1d
 
 
 def get_proteins(path: str, test_path: str, single_mode: str = None, black_list: dict = None) -> (dict, dict):
@@ -26,7 +30,7 @@ def get_proteins(path: str, test_path: str, single_mode: str = None, black_list:
             return exit(f':: System Exit Report: {__name__}.get_proteins failed to recognize the given node: {node}')
 
         # Create the node test directory
-        os.makedirs(f'{test_path}\\{node}')
+        # os.makedirs(f'{test_path}\\{node}')
 
         # Saves the directory for further uses
         proteins_test_paths = {f"{node}": f'{test_path}\\{node}'}
@@ -45,7 +49,7 @@ def get_proteins(path: str, test_path: str, single_mode: str = None, black_list:
                 logger.debug(f':: System Exit Report: {__name__}.get_proteins received a black listed protein: {node}')
                 pass
             # Create the node test directory
-            os.makedirs(f'{test_path}\\{node}')
+            # os.makedirs(f'{test_path}\\{node}')
 
             # Saves the directory for further uses
             proteins_test_paths[f'{node}'] = f'{test_path}\\{node}'
@@ -122,12 +126,12 @@ def env_set(raid: str, node: str, debug_mode: bool = False):
     # open distance file (as an np-array):
     dist = []
     try:
-        if os.path.isfile(raid + 'dist_wh.txt'):
+        if os.path.isfile(raid + r'\dist_wh.txt'):
             # Van der Waals
-            dist = np.concatenate((np.genfromtxt(raid + 'dist.txt', dtype="str"),
-                                   np.genfromtxt(raid + 'dist_wh.txt', dtype="str")))
+            dist = np.concatenate((np.genfromtxt(raid + r'\dist.txt', dtype="str"),
+                                   np.genfromtxt(raid + r'\dist_wh.txt', dtype="str")))
         else:
-            dist = np.genfromtxt(raid + 'dist.txt', dtype="str")
+            dist = np.genfromtxt(raid + r'\dist.txt', dtype="str")
     except Exception as error:
         logger.warning(f':: System Error Report: Could not load {node} distance file.')
         logger.error(f':: {error}')
@@ -159,3 +163,141 @@ def env_set(raid: str, node: str, debug_mode: bool = False):
     logger.debug(":: Process completed successfully, waiting for data to be read...")
     comp = {'dist': dist, 'u': u, 'v': v, 'lb': lb, 'ub': ub, 'prop_dist': prop_dist}
     return comp
+
+
+# funções auxiliares utilizadas:
+# prod_interno :: produto interno entre pares (A,v) com A matriz (n, p) e v vetor m-dimensional;
+# def :: <(A, v), (B, w)> = Tr(AB') + sum_{i = 1}^{m} (v_i * w_i)
+def prod_interno(matrix_a, matrix_b, v, w):
+    # n :: número de linhas de A;
+    # p :: número de linhas de B;
+    n, p = matrix_a.shape
+    if matrix_a.shape != matrix_b.shape or len(v) != len(w):
+        print('Report Error: Incompatible dimensions!')
+        return
+    prod_soma = sum(inner1d(matrix_a, matrix_b))
+    prod_soma += np.dot(v, w)
+    return prod_soma
+
+
+# distância Euclidiana entre as linhas i e j da matriz X;
+def distance(i, j, matrix_x):
+    dist = np.linalg.norm(matrix_x[i, :] - matrix_x[j, :])
+    return dist
+
+
+# centralizar um conjunto de pontos x;
+def centralizar(x):
+    # caso a entrada não esteja no formato adequado;
+    x = np.array(x, dtype=float)
+
+    # k :: dimensão
+    # n :: número de pontos
+    n, k = x.shape
+
+    ponto_medio = (1 / n) * np.dot(np.ones(n), x)
+    # ponto transladado;
+    x = x - (np.ones((n, 1)) * ponto_medio)
+
+    return x
+
+
+# rmsd :: calcula a raiz quadrada da média dos desvios entre duas estruturas A e B (centralizadas);
+def rmsd(matrix_a, matrix_b):
+    # Get logger
+    logger = logging.getLogger('root.utils.rmsd')
+    # n :: número de pontos;
+    n, k = matrix_a.shape
+    if matrix_a.shape != matrix_b.shape:
+        logger.warning('Dimensões incompativeis entre as matrizes')
+        logger.warning('Dimensões da matriz A : {}'.format(matrix_a.shape))
+        logger.warning('Dimensões da matriz B : {}'.format(matrix_b.shape))
+        return 'NaN'
+    # Procrustes:
+    # Given two matrices A and B it is asked to find an orthogonal matrix Q which most closely maps A to B.
+    matrix_a = centralizar(matrix_a)
+    matrix_b = centralizar(matrix_b)
+    singular_value_dec = svd(np.dot(matrix_b, matrix_a.T))
+    matri_q = np.dot(singular_value_dec[0], singular_value_dec[2])
+
+    correlation = np.linalg.norm(np.dot(matri_q, matrix_a) - matrix_b, ord='fro')
+
+    return np.sqrt(1 / n) * correlation
+
+
+# mde :: erro médio dos desvios;
+# lb :: limitantes inferiores;
+# ub :: limitantes superiores;
+def mde(ponto, vec_u, vec_v, lb, ub):
+    # dim :: tamanho/ dimensão do vetor u;
+    # m :: número de limitantes/distâncias conhecidos/das;
+    dim = len(vec_u)
+    m = len(lb)
+
+    soma = 0
+    for s in range(dim):
+        dist_ponto = distance(vec_u[s], vec_v[s], ponto)
+        soma += max((lb[s] - dist_ponto) / lb[s], 0) + max((dist_ponto - ub[s]) / ub[s], 0)
+
+    return soma / m
+
+
+# apenas uma checagem para verificar se o problema de dimensionamento foi resolvido.
+def check_solution_dimension(matrix_a, matrix_b):
+    if matrix_a.shape[0] != matrix_b.shape[0]:
+        return True
+    else:
+        return False
+
+
+# dado um conjunto de pontos, projeta-se suas distâncias sobre os limitantes lb e ub;
+# saída :: vetor armazenando as distâncias projetadas.
+def dist_matrix_projection(dim, vec_u, vec_v, lower_bound, upper_bound, point_set, multistart=False):
+    y = np.zeros(dim)
+    if multistart:
+        for s in range(dim):
+            # d = distance(vec_u[s], vec_v[s], point_set)
+            # if lower_bound[s] <= d <= upper_bound[s]:
+            #     y[s] = d
+            # elif d < lower_bound[s]:
+            #     y[s] = random.uniform(lower_bound[s], upper_bound[s])
+            # elif d > upper_bound[s]:
+            #     y[s] = random.uniform(lower_bound[s], upper_bound[s])
+            y[s] = random.uniform(lower_bound[s], upper_bound[s])
+    else:
+        for s in range(dim):
+            d = distance(vec_u[s], vec_v[s], point_set)
+            y[s] = np.clip(d, lower_bound[s], upper_bound[s])
+    return y
+
+
+def atoms_re_ordination(dist_file):
+    """sorting atoms according to its distance file. To create the expected/correct solution"""
+    # Get current logger
+    logger = logging.getLogger()
+
+    # total number of atoms (in accordance with the distance data file)
+    total_atoms_ord = max(
+        max(np.array(dist_file[:, 0], dtype="int")),
+        max(np.array(dist_file[:, 1], dtype="int")),
+    )
+
+    to = time()
+    atoms_names_list = []
+    for item in dist_file:
+        line = [item[0]] + list(item[2:5])
+        atoms_names_list.append(line)
+        line = [item[1]] + list(item[5:8])
+        atoms_names_list.append(line)
+    # create a dict containing the dist list index
+    dist_atoms = {}
+    for item in atoms_names_list:
+        if int(item[0]) in dist_atoms:
+            continue
+        else:
+            dist_atoms[int(item[0])] = item[1:]
+
+    elapsed_time = time() - to
+    logger.debug(f":: The process of reformatting/re-ordination was successfully completed in {elapsed_time:.4f}s")
+
+    return total_atoms_ord, dist_atoms
