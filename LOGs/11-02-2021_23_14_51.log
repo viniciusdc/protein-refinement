@@ -1,0 +1,7 @@
+2021-02-11 23:14:51,073 root                : INFO     :: System Report: The process has started on 2021-02-11 23:14:51.072217.
+2021-02-11 23:14:51,073 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2021-02-11 23:14:51,074 root                : INFO     :: System Report: Creating the test directory.
+2021-02-11 23:14:51,095 root                : INFO     :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-02-11 23:14:51,095 root.get_proteins   : INFO     :: System Report: Single mode enabled!
+2021-02-11 23:14:51,096 root.get_proteins   : INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-02-11 23:14:51,097 root.get_proteins   : INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\11-02-2021_23_14_51\ubiq successfully created.

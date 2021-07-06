@@ -1,0 +1,3 @@
+2020-07-31 16:30:35,910 root                : INFO     :: System Report: The process has started on 2020-07-31 16:30:35.909618.
+2020-07-31 16:30:35,911 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2020-07-31 16:30:35,911 root.get_proteins   : INFO     :: System Report: Single mode enabled!

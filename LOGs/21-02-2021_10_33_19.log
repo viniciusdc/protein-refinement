@@ -1,0 +1,72 @@
+2021-02-21 10:33:19,847 root                : INFO     :: System Report: The process has started on 2021-02-21 10:33:19.846140.
+2021-02-21 10:33:19,847 root.config_check   : DEBUG    :: System Report: config.json file available, progressing to next phase.
+2021-02-21 10:33:19,847 root                : DEBUG    :: System Report: Creating the test directory.
+2021-02-21 10:33:19,847 root                : DEBUG    :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-02-21 10:33:19,847 root.utils.get_proteins: DEBUG    :: System Report: Single mode enabled!
+2021-02-21 10:33:19,858 root.utils.get_proteins: INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-02-21 10:33:19,871 root.utils.get_proteins: INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\21-02-2021_10_33_19\ubiq successfully created.
+2021-02-21 10:33:19,871 root                : DEBUG    :: System Report: Write Matlab protein input data
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    >> System Report: Looking for dist.txt file of node: ubiq...
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    >> System Report: One correspondence found... Loading dist.txt file.
+2021-02-21 10:33:19,880 root.distance_file  : DEBUG    :: System Report: Process completed successfully, waiting for data to be read...
+
+2021-02-21 10:33:19,880 root                : INFO     :: System Report: Start [SDP].
+2021-02-21 10:34:11,500 root.utils.matlab_sdp: INFO     # proteins.txt read complete!
+2021-02-21 10:34:11,505 root.utils.matlab_sdp: INFO     # Total number of nodes read: 1
+2021-02-21 10:34:11,506 root.utils.matlab_sdp: INFO     # Protein: ubiq
+2021-02-21 10:34:16,727 root.utils.matlab_sdp: INFO     # Distance file read: Complete
+2021-02-21 10:34:17,138 root.utils.matlab_sdp: INFO     # Number of used atoms: 964  Number of know distances: 2647 # All restricitons loaded
+2021-02-21 10:34:17,139 root.utils.matlab_sdp: INFO     Generating A(G) and B matrix...
+2021-02-21 10:34:45,271 root.utils.matlab_sdp: INFO     Completed generation for B matrix and b vector!
+2021-02-21 10:34:58,574 root.utils.matlab_sdp: INFO     Complete creation of matrix A(G)!
+2021-02-21 10:34:58,586 root.utils.matlab_sdp: INFO     SDPT3 - Start Solving.
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO     
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO      num. of constraints = 6258
+2021-02-21 10:34:59,223 root.utils.matlab_sdp: INFO      dim. of sdp    var  = 964,   num. of sdp  blk  =  1
+2021-02-21 10:35:02,512 root.utils.matlab_sdp: INFO      dim. of linear var  = 5294
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO        SDPT3: Infeasible path-following algorithms
+2021-02-21 10:35:02,513 root.utils.matlab_sdp: INFO     *******************************************************************
+2021-02-21 10:35:02,527 root.utils.matlab_sdp: INFO      version  predcorr  gam  expon  scale_data
+2021-02-21 10:35:02,527 root.utils.matlab_sdp: INFO        HKM      1      0.000   1        0
+2021-02-21 10:35:02,528 root.utils.matlab_sdp: INFO     it pstep dstep pinfeas dinfeas  gap      prim-obj      dual-obj    cputime
+2021-02-21 10:35:02,528 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-02-21 10:35:08,205 root.utils.matlab_sdp: INFO      0|0.000|0.000|3.0e+03|1.7e+02|2.3e+09|-2.545717e+07  0.000000e+00| 0:0:02| spchol  1  1
+2021-02-21 10:35:42,437 root.utils.matlab_sdp: INFO      1|0.742|0.938|7.8e+02|1.1e+01|6.7e+08|-1.272905e+07 -4.605874e+06| 0:0:08| chol  1  1
+2021-02-21 10:36:16,331 root.utils.matlab_sdp: INFO      2|0.884|0.666|9.1e+01|3.9e+00|8.9e+07|-1.110393e+07 -5.128532e+06| 0:0:42| chol  1  1
+2021-02-21 10:36:50,574 root.utils.matlab_sdp: INFO      3|0.534|0.071|4.3e+01|3.6e+00|5.1e+07|-8.411602e+08 -5.165259e+06| 0:1:16| chol  1  1
+2021-02-21 10:37:19,437 root.utils.matlab_sdp: INFO      4|0.232|0.007|3.3e+01|3.6e+00|2.5e+09|-3.322509e+12 -5.189839e+06| 0:1:50| chol  1  2
+2021-02-21 10:37:47,115 root.utils.matlab_sdp: INFO      5|0.026|0.001|3.2e+01|3.6e+00|1.1e+13|-1.529807e+17 -5.433267e+06| 0:2:19| chol
+2021-02-21 10:37:47,116 root.utils.matlab_sdp: INFO       linsysolve: Schur complement matrix not positive definite
+2021-02-21 10:37:50,031 root.utils.matlab_sdp: INFO       switch to LU factor. lu * 8   3
+2021-02-21 10:38:20,679 root.utils.matlab_sdp: INFO      6|0.000|0.000|3.2e+01|3.6e+00|1.4e+13|-2.212679e+17 -7.212993e+06| 0:2:50| lu *11   4
+2021-02-21 10:38:53,547 root.utils.matlab_sdp: INFO      7|0.000|0.000|3.2e+01|3.6e+00|2.3e+13|-3.635786e+17 -7.934185e+06| 0:3:20| lu *19   8
+2021-02-21 10:39:29,842 root.utils.matlab_sdp: INFO      8|0.000|0.000|3.2e+01|3.6e+00|3.6e+13|-6.009429e+17 -1.317177e+07| 0:3:53| lu 30 ^29
+2021-02-21 10:40:03,093 root.utils.matlab_sdp: INFO      9|0.000|0.000|3.3e+01|3.6e+00|7.6e+13|-1.250370e+18 -1.326638e+07| 0:4:29| lu 30 ^11
+2021-02-21 10:40:39,141 root.utils.matlab_sdp: INFO     10|0.000|0.000|3.6e+01|3.6e+00|8.9e+13|-1.467501e+18 -1.322488e+07| 0:5:03| lu 30  30
+2021-02-21 10:41:11,325 root.utils.matlab_sdp: INFO     11|0.000|0.000|3.7e+01|3.6e+00|3.7e+14|-6.093552e+18 -1.310530e+07| 0:5:39| lu 30 ^ 6
+2021-02-21 10:41:47,618 root.utils.matlab_sdp: INFO     12|0.000|0.000|6.0e+01|3.6e+00|2.2e+15|-3.659571e+19 -1.311276e+07| 0:6:11| lu 30 ^26
+2021-02-21 10:42:18,546 root.utils.matlab_sdp: INFO     13|0.000|0.000|6.6e+01|3.6e+00|2.2e+15|-3.661844e+19 -1.310701e+07| 0:6:47| lu 30
+2021-02-21 10:42:18,546 root.utils.matlab_sdp: INFO       stop: steps in predictor too short: pstep = 5.14e-07,  dstep = 5.44e-05
+2021-02-21 10:42:18,574 root.utils.matlab_sdp: INFO     
+2021-02-21 10:42:18,626 root.utils.matlab_sdp: INFO     14|0.000|0.000|6.6e+01|3.6e+00|2.2e+15|-3.661844e+19 -1.310701e+07| 0:7:18|
+2021-02-21 10:42:18,627 root.utils.matlab_sdp: INFO       prim_inf,dual_inf,relgap = 6.64e+01, 3.57e+00, 6.05e-05
+2021-02-21 10:42:18,698 root.utils.matlab_sdp: INFO       sqlp stop: dual problem is suspected of being infeasible
+2021-02-21 10:42:18,698 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-02-21 10:42:18,699 root.utils.matlab_sdp: INFO      number of iterations   = 14
+2021-02-21 10:42:18,700 root.utils.matlab_sdp: INFO      residual of dual infeasibility
+2021-02-21 10:42:18,700 root.utils.matlab_sdp: INFO      certificate X          = 1.09e-04
+2021-02-21 10:42:18,701 root.utils.matlab_sdp: INFO      reldist to infeas.    <= 9.85e-07
+2021-02-21 10:42:18,701 root.utils.matlab_sdp: INFO      Total CPU time (secs)  = 438.14
+2021-02-21 10:42:18,702 root.utils.matlab_sdp: INFO      CPU time per iteration = 31.30
+2021-02-21 10:42:18,702 root.utils.matlab_sdp: INFO      termination code       =  2
+2021-02-21 10:42:18,703 root.utils.matlab_sdp: INFO      DIMACS errors: 7.1e+02  0.0e+00  5.8e+01  0.0e+00  -9.9e-01  6.0e-02
+2021-02-21 10:42:18,703 root.utils.matlab_sdp: INFO     -------------------------------------------------------------------
+2021-02-21 10:42:18,760 root.utils.matlab_sdp: INFO     >> Solver conclusion: sqlp stop: dual problem is suspected of being infeasible
+2021-02-21 10:42:18,761 root.utils.matlab_sdp: INFO     # Get spectral decomposition of solution
+2021-02-21 10:42:18,893 root.utils.matlab_sdp: INFO     # Generating output files from obtained solutions
+2021-02-21 10:42:19,593 root.utils.matlab_sdp: INFO     # Process completed successfully!
+2021-02-21 10:42:19,593 root.utils.matlab_sdp: INFO     ------------------------------------------------------
+2021-02-21 10:42:19,635 root.utils.matlab_sdp: INFO     # The SDP process was successfully completed !
+2021-02-21 10:42:22,422 root                : DEBUG    :: System Report: SDP completed! SPG environment configuration set.
+

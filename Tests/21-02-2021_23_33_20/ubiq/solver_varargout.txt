@@ -1,0 +1,1 @@
+{"solveriter": "19", "solvertime": "6.193660e+02", "elapsed time": "6.591667e+02", "info": "sqlp stop: dual problem is suspected of being infeasible"}

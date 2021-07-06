@@ -1,0 +1,12 @@
+2021-02-14 17:34:39,011 root                : INFO     :: System Report: The process has started on 2021-02-14 17:34:39.010990.
+2021-02-14 17:34:39,012 root.config_check   : INFO     :: System Report: config.json file available, progressing to next phase.
+2021-02-14 17:34:39,012 root                : INFO     :: System Report: Creating the test directory.
+2021-02-14 17:34:39,012 root                : INFO     :: System Report: Checking operation mode and generating test node(s) path(s).
+2021-02-14 17:34:39,013 root.get_proteins   : INFO     :: System Report: Single mode enabled!
+2021-02-14 17:34:39,015 root.get_proteins   : INFO     :: System Report: Protein ubiq was successfully loaded.
+2021-02-14 17:34:39,015 root.get_proteins   : INFO     :: System Report: Directory E:\PycharmProjects\protein-refinement\Tests\14-02-2021_17_34_39\ubiq successfully created.
+2021-02-14 17:34:39,015 root                : INFO     :: System Report: Write Matlab protein input data
+2021-02-14 17:34:39,016 root.distance_file  : DEBUG    >> System Report: Looking for dist.txt file of node: ubiq...
+2021-02-14 17:34:39,016 root.distance_file  : DEBUG    >> System Report: One correspondence found... Loading dist.txt file.
+2021-02-14 17:34:39,016 root.distance_file  : INFO     :: System Report: Process completed successfully, waiting for data to be read...
+
